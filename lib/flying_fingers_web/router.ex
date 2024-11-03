@@ -19,7 +19,6 @@ defmodule FlyingFingersWeb.Router do
     pipe_through :browser
 
     live "/", Setup
-
   end
 
   # Other scopes may use custom stacks.

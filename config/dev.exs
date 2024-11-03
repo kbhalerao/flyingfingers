@@ -20,7 +20,7 @@ config :flying_fingers, FlyingFingersWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {0, 0, 0, 0}, port: 4000],
-  check_origin: false,
+  check_origin: ["http://localhost", "http://fly.home.arpa:4000", "https://fly.agsci.com"],
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "f5Oop+nYTemeRlUMkq4TAKX246mndgsUYhRkBvXYq2P6n/4FD4TslhImPdH8sR0S",

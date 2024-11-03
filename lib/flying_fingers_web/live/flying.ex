@@ -17,18 +17,22 @@ defmodule FlyingFingersWeb.Flying do
     PubSub.subscribe(FlyingFingers.PubSub, @topic)
     problem = Data.get_problem(FFData)
     estimate = %{"developer" => "Developer", "days" => 2}
+
     socket =
       socket
       |> assign(:form, to_form(estimate))
       |> assign(:problem, problem)
+
     {:ok, socket}
   end
 
   def handle_event("save", response, socket) do
     Data.add_response(FFData, response)
+
     socket =
       socket
       |> put_flash(:info, "Your estimate for this task was sent")
+
     {:noreply, socket}
   end
 
@@ -36,7 +40,7 @@ defmodule FlyingFingersWeb.Flying do
     socket =
       socket
       |> assign(:problem, msg)
+
     {:noreply, socket}
   end
-
 end

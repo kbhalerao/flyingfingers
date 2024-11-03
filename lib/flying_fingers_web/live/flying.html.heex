@@ -1,31 +1,33 @@
 <section>
-<h1 class="text-xl my-3">Flying Fingers</h1>
-<p>Estimate the number of weeks you think this part of the project will take</p>
-<h2 class="text-l my-2">Problem Statement:</h2>
-<p class="italic"><%= @problem["statement"] %></p>
-<br>
-<div>
-<h2 class="text-l my-2">Your estimate:</h2>
+  <h1 class="text-xl my-3">Flying Fingers</h1>
+  <p>Estimate the number of weeks you think this part of the project will take</p>
+  <h2 class="text-l my-2">Problem Statement:</h2>
+  <p class="italic"><%= @problem["statement"] %></p>
+  <br />
+  <div>
+    <h2 class="text-l my-2">Your estimate:</h2>
 
-  <.simple_form for={@form} phx-submit="save">
-  <div class="flex gap-2">
-    <.input field={@form["developer"]} label="Your name" type="text"/>
-    <.input field={@form["days"]} label="Estimate in days" type="number"/>
-    <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3 flex-shrink">Submit</button>
+    <.simple_form for={@form} phx-submit="save">
+      <div class="flex gap-2">
+        <.input field={@form["developer"]} label="Your name" type="text" />
+        <.input field={@form["days"]} label="Estimate in days" type="number" />
+        <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3 flex-shrink">
+          Submit
+        </button>
+      </div>
+    </.simple_form>
   </div>
-  </.simple_form>
-
-</div>
-<div>
-  Number of responses so far: <%= @problem["responses"] |> Map.keys |> length %>
-</div>
-<%= if @problem["reveal"] do %>
-  <table>
-    <tr :for={item <- @problem["responses"]  }>
-      <td><%= elem(item,0) %></td><td class="px-3"><%= elem(item,1) %></td>
-    </tr>
-  </table>
-<% else %>
-Awaiting responses from everyone ... 
-<% end %>
+  <div>
+    Number of responses so far: <%= @problem["responses"] |> Map.keys() |> length %>
+  </div>
+  <%= if @problem["reveal"] do %>
+    <table>
+      <tr :for={item <- @problem["responses"]}>
+        <td><%= elem(item, 0) %></td>
+        <td class="px-3"><%= elem(item, 1) %></td>
+      </tr>
+    </table>
+  <% else %>
+    Awaiting responses from everyone ...
+  <% end %>
 </section>

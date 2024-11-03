@@ -12,7 +12,6 @@ defmodule FlyingFingers.Data do
     GenServer.start_link(__MODULE__, problem, name: FFData)
   end
 
-
   @doc """
   Add a new response of the form
   %{"developer" => string(), "days" => number()}
@@ -21,7 +20,6 @@ defmodule FlyingFingers.Data do
     GenServer.cast(pid, {:add_response, obj})
   end
 
-
   @doc """
   Retrieve all responses
   """
@@ -29,11 +27,9 @@ defmodule FlyingFingers.Data do
     GenServer.call(pid, :get_problem)
   end
 
-
   def set_problem(pid, statement) do
     GenServer.cast(pid, {:set_problem, statement})
   end
-
 
   @doc """
   Reset the state to default
@@ -45,10 +41,10 @@ defmodule FlyingFingers.Data do
   def reveal(pid) do
     GenServer.cast(pid, {:reveal})
   end
+
   # Server (callbacks)
 
-
-  defp get_blank_problem(statement \\ "A problem statement")  do
+  defp get_blank_problem(statement \\ "A problem statement") do
     %{
       "statement" => statement,
       "reveal" => false,
@@ -68,10 +64,12 @@ defmodule FlyingFingers.Data do
 
   @impl true
   def handle_cast({:reset_problem, statement}, _state) do
-    problem = case statement do
-      nil -> get_blank_problem()
-      s   -> get_blank_problem(s)
-    end
+    problem =
+      case statement do
+        nil -> get_blank_problem()
+        s -> get_blank_problem(s)
+      end
+
     cast_broadcast(problem)
   end
 
