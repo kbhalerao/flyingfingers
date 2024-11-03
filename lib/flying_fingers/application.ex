@@ -9,7 +9,7 @@ defmodule FlyingFingers.Application do
   def start(_type, _args) do
     children = [
       FlyingFingersWeb.Telemetry,
-      FlyingFingers.Repo,
+      # FlyingFingers.Repo,
       {DNSCluster, query: Application.get_env(:flying_fingers, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: FlyingFingers.PubSub},
       FlyingFingers.Data,
