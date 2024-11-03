@@ -13,7 +13,7 @@ config :flying_fingers,
 
 # Configures the endpoint
 config :flying_fingers, FlyingFingersWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [ip: {0,0,0,0}, port: 4000],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: FlyingFingersWeb.ErrorHTML, json: FlyingFingersWeb.ErrorJSON],
