@@ -1,27 +1,14 @@
 <section>
 <h1 class="text-xl">Flying Fingers</h1>
 
-<div class="flex gap-2">
-    <div class="grow">
-    <.simple_form for={@formp} phx-submit="update">
-    <div class="flex gap-2">
-        <div class="grow">
-            <.input field={@formp["statement"]} label="Problem Statement" type="textarea"/>
-        </div>
-        <div>
-            <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3 flex-shrink">Update</button>
-        </div>
-    </div>
-    </.simple_form>
-    </div>
-    <div>
-        <.simple_form for={@formr} phx-submit="reset">
-            <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3 flex-shrink">Reset</button>
-        </.simple_form>
-    </div>
-</div>
+<.simple_form for={@formp} phx-submit="update">
+    <.input field={@formp["statement"]} label="Problem Statement" type="textarea"/>
+    <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3">Update</button>
+</.simple_form>
+
 <div>
-<h2 class="text-l my-2">Your estimate:</h2>
+
+  <h2 class="text-l my-4">Your estimate:</h2>
 
   <.simple_form for={@form} phx-submit="save">
   <div class="flex gap-2">
@@ -41,6 +28,11 @@
       <td><%= elem(item,0) %></td><td class="px-3"><%= elem(item,1) %></td>
     </tr>
   </table>
+      <div>
+        <.simple_form for={@formr} phx-submit="reset">
+            <button class="bg-black border border-black text-white rounded-md hover:bg-gray-700 font-bold px-3 flex-shrink">Reset</button>
+        </.simple_form>
+    </div>
 <% else %>
 Press reveal to show responses
     <.simple_form for={@formr} phx-submit="reveal">

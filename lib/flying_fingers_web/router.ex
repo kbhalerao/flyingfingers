@@ -18,8 +18,7 @@ defmodule FlyingFingersWeb.Router do
   scope "/", FlyingFingersWeb do
     pipe_through :browser
 
-    live "/setup", Setup
-    live "/", Flying
+    live "/", Setup
 
   end
 
