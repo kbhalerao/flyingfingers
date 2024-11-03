@@ -13,6 +13,13 @@ defmodule FlyingFingers.Data do
   end
 
   @doc """
+  Increment number of participants
+  """
+  def increment_developers(pid) do
+    GenServer.cast(pid, {:incr_devs})
+  end
+
+  @doc """
   Add a new response of the form
   %{"developer" => string(), "days" => number()}
   """
@@ -48,7 +55,8 @@ defmodule FlyingFingers.Data do
     %{
       "statement" => statement,
       "reveal" => false,
-      "responses" => %{}
+      "responses" => %{},
+      "responders" => 0
     }
   end
 
@@ -77,6 +85,13 @@ defmodule FlyingFingers.Data do
   def handle_cast({:add_response, %{"developer" => d, "days" => n}}, state) do
     responses = Map.put(Map.get(state, "responses"), d, n)
     newstate = Map.put(state, "responses", responses)
+    cast_broadcast(newstate)
+  end
+
+  @impl true
+  def handle_cast({:incr_devs}, state) do
+    responders = Map.get(state, "responders")
+    newstate = Map.put(state, "responders", responders + 1)
     cast_broadcast(newstate)
   end
 

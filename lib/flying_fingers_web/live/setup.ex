@@ -17,6 +17,8 @@ defmodule FlyingFingersWeb.Setup do
       |> assign(:form, to_form(estimate))
       |> assign(:problem, problem)
 
+    # Data.increment_developers(FFData)
+
     {:ok, socket}
   end
 
