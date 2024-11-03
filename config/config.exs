@@ -8,7 +8,7 @@
 import Config
 
 config :flying_fingers,
-  ecto_repos: [FlyingFingers.Repo],
+  ecto_repos: [],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint

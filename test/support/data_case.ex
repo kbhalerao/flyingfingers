@@ -18,7 +18,7 @@ defmodule FlyingFingers.DataCase do
 
   using do
     quote do
-      alias FlyingFingers.Repo
+      # alias FlyingFingers.Repo
 
       import Ecto
       import Ecto.Changeset
@@ -36,8 +36,8 @@ defmodule FlyingFingers.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(FlyingFingers.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    # pid = Ecto.Adapters.SQL.Sandbox.start_owner!(FlyingFingers.Repo, shared: not tags[:async])
+    # on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 
   @doc """

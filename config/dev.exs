@@ -1,14 +1,14 @@
 import Config
 
 # Configure your database
-config :flying_fingers, FlyingFingers.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "flying_fingers_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+# config :flying_fingers, FlyingFingers.Repo,
+#   username: "postgres",
+#   password: "postgres",
+#   hostname: "localhost",
+#   database: "flying_fingers_dev",
+#   stacktrace: true,
+#   show_sensitive_data_on_connection_error: true,
+#   pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -20,7 +20,7 @@ config :flying_fingers, FlyingFingersWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {0, 0, 0, 0}, port: 4000],
-  check_origin: ["http://localhost", "http://fly.home.arpa:4000", "https://fly.agsci.com"],
+  check_origin: false,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "f5Oop+nYTemeRlUMkq4TAKX246mndgsUYhRkBvXYq2P6n/4FD4TslhImPdH8sR0S",
